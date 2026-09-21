@@ -38,11 +38,7 @@ PY
 mkdir -p out
 run_csg() {
   local output="$1" log="$2"
-  set +e
   OPENSCADPATH= xvfb-run -a openscad --enable=object-function -o "$output" "$source" >"$log" 2>&1
-  local rc=$?
-  set -e
-  return $rc
 }
 
 echo 'DEP-05: combined evaluation with both pins present'
