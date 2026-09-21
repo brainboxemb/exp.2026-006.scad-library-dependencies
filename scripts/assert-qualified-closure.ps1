@@ -12,7 +12,7 @@ $Util = "$Mechint/ext/lib.scad.util"
 function Assert-Head {
   param([string] $Path, [string] $Expected)
   $Actual = (& git -C $Path rev-parse HEAD).Trim()
-  if ($Actual -ne $Expected) { throw "Unexpected HEAD for $Path: $Actual (expected $Expected)" }
+  if ($Actual -ne $Expected) { throw "Unexpected HEAD for ${Path}: $Actual (expected $Expected)" }
 }
 
 function Assert-Uninitialized {
