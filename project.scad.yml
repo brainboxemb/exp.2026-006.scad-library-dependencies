@@ -25,6 +25,8 @@ builds:
 externals:
   - name: lib.scad.mechint
     required_file: openscad/sliding-dovetail/sliding_dovetail.scad
+  - name: lib.scad.util
+    required_file: openscad/transform.scad
 
 publication:
   production:
