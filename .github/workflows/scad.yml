@@ -1,0 +1,18 @@
+name: SCAD production
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: write
+  packages: read
+
+jobs:
+  scad:
+    uses: brainboxemb/tool.scad-project/.github/workflows/project-production.yml@v0.15.0
+    with:
+      cache_namespace: exp-2026-006-scad-library-dependencies-v1
