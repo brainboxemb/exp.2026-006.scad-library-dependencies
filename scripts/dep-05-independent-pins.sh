@@ -47,7 +47,14 @@ if ! run_csg out/dep-05-both.csg out/dep-05-both.log; then
   cat out/dep-05-both.log >&2
   exit 1
 fi
-test -s out/dep-05-both.csg
+if [[ ! -s out/dep-05-both.csg ]]; then
+  echo 'Combined evaluation produced no non-empty CSG output.' >&2
+  echo 'OpenSCAD log:' >&2
+  cat out/dep-05-both.log >&2 || true
+  echo 'Output directory:' >&2
+  ls -la out >&2 || true
+  exit 1
+fi
 if grep -Eiq "can't open|cannot open|could not open|unknown module" out/dep-05-both.log; then
   cat out/dep-05-both.log >&2
   exit 1
