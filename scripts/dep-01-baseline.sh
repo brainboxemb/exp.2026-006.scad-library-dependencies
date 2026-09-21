@@ -42,7 +42,7 @@ assert_nested_gitlink_uninitialized() {
 }
 
 echo "DEP-01: bootstrap released direct-only dependency model"
-./bootstrap.sh
+bash scripts/released-direct-bootstrap.sh
 
 assert_head "tools/tool.git-project" "$expected_root_tool"
 assert_head "tools/tool.scad-project" "$expected_scad_tool"

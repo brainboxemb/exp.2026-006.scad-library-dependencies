@@ -82,5 +82,5 @@ Only that direct desktop result closes the desktop portion of DEP-03.
 
 ## Status
 
-- Automated engine/path proof: **pending lightweight CI rerun**.
+- Automated engine/path proof: **PASS** — lightweight AST/path run `35636570016` green at exact PR head `86b90b4dabeb0ff39f922e2c7ab1f722d95855a1`.
 - Windows desktop proof: **PASS** — direct `lib.scad.mechint/main.scad` open and F6 confirmed by the operator on 2026-09-21; default lock-section renders without missing `lib.scad.util` / `inspection.scad` warning.

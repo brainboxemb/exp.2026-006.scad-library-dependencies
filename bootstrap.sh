@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
 tool_path="tools/tool.git-project"
 command -v git >/dev/null 2>&1 || { echo "Git was not found in PATH." >&2; exit 1; }
 root="$(git rev-parse --show-toplevel)"
@@ -12,3 +11,6 @@ fi
 git -C "$root" submodule sync -- "$tool_path" >/dev/null
 git -C "$root" submodule update --init -- "$tool_path" >/dev/null
 "$root/$tool_path/git-project.sh" bootstrap --repo "$root"
+bash "$root/prototype/transitive-external-bootstrap.sh" "$root"
+echo
+echo "Bootstrap complete, including transitive external library dependencies."

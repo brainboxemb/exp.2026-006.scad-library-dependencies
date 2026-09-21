@@ -30,8 +30,8 @@ function Assert-NestedGitlinkUninitialized {
 }
 
 Write-Host "DEP-01: bootstrap released direct-only dependency model"
-& .\bootstrap.ps1
-if ($LASTEXITCODE -ne 0) { throw "Root bootstrap failed." }
+& .\scripts\released-direct-bootstrap.ps1
+if ($LASTEXITCODE -ne 0) { throw "Released direct-only bootstrap failed." }
 
 Assert-Head -Path "tools/tool.git-project" -Expected $ExpectedRootTool
 Assert-Head -Path "tools/tool.scad-project" -Expected $ExpectedScadTool

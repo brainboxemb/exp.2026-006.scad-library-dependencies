@@ -76,9 +76,9 @@ The work is architecture-first rather than a collection of unrelated checks:
    - controlled `role: external` traversal proved on Linux and Windows;
    - nested tooling remains uninitialized;
    - merged baseline `5385f797ea549c39f075da11e3fa838350e5e44c`.
-3. **DEP-03 — desktop OpenSCAD — active**
-   - automatically prove library-local OpenSCAD resolution with an empty `OPENSCADPATH`;
-   - then directly open the same nested library entrypoint in Windows desktop OpenSCAD;
+3. **DEP-03 — desktop OpenSCAD — qualified**
+   - library-local resolution proved in CI with an empty `OPENSCADPATH`;
+   - direct nested `lib.scad.mechint/main.scad` open + F6 passed in Windows desktop OpenSCAD on 2026-09-21;
    - no global library install or wrapper launch.
 4. **DEP-04 — CI/build discovery**
    - prove the nested source participates correctly in SCAD dependency
@@ -94,6 +94,21 @@ The work is architecture-first rather than a collection of unrelated checks:
 
 The qualification cases are acceptance boundaries around one dependency model;
 they are not seven independent implementations.
+
+## Normal developer flow
+
+The dependency-specific `scripts/dep-0x-*` and `prototype/*` files are experiment
+test harnesses. A normal user works through the root entrypoints:
+
+```text
+bootstrap.ps1 / bootstrap.sh
+update-repo.ps1 / update-repo.sh
+```
+
+In the experiment these entrypoints now add the qualified transitive external
+closure after the released generic direct dependency operation. This is the
+candidate user experience; the substantial traversal logic still needs to move
+into `tool.git-project` before production adoption.
 
 ## Current released baselines
 
