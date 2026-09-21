@@ -1,0 +1,42 @@
+name: DEP-06 status and safe update
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact source without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          submodules: false
+
+      - name: Qualify full closure status and safe update
+        shell: bash
+        run: bash scripts/dep-06-status-update.sh
+
+  windows:
+    runs-on: windows-2025
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact source without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          submodules: false
+
+      - name: Qualify normal status/update entrypoints
+        shell: pwsh
+        run: .\scripts\dep-06-status-update.ps1
