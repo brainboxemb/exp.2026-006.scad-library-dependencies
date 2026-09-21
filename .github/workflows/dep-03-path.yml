@@ -49,7 +49,7 @@ jobs:
             echo
             echo 'Direct target: `dsg/openscad/ext/lib.scad.mechint/main.scad`'
             echo
-            echo 'Working directory: `/tmp`; `OPENSCADPATH` explicitly empty; output is evaluated CSG.'
+            echo 'Working directory: `/tmp`; `OPENSCADPATH` explicitly empty; output is AST.'
             echo
             echo '```json'
             if [[ -f out/dep-03-engine.json ]]; then cat out/dep-03-engine.json; else echo '{"result":"evidence file not produced"}'; fi

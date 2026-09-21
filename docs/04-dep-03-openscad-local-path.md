@@ -29,30 +29,29 @@ not merely checking that an unused include happens to parse.
 
 `DEP-03 OpenSCAD local path` first replays DEP-02, then runs the released
 `scad-toolchain-openscad:v0.6.1` engine directly against the nested
-`lib.scad.mechint/main.scad` and writes an evaluated CSG tree with
-`view="male"` to keep the recurring path regression lightweight.
+`lib.scad.mechint/main.scad` and writes its parsed AST. AST export is used
+specifically to keep this recurring dependency-resolution regression lightweight.
 
 The invocation deliberately removes two possible accidental resolution paths:
 
 - Docker working directory is `/tmp`, not the experiment root or mechint root;
 - `OPENSCADPATH` is explicitly empty.
 
-The file still declares the real library-local
+The file declares the real library-local
 `use <ext/lib.scad.util/openscad/inspection.scad>`, so a missing nested util
-checkout produces an OpenSCAD dependency warning even though the lightweight
-CI view does not execute `util_section_inspect()`.
+checkout produces an OpenSCAD dependency warning while parsing.
 
 A pass requires:
 
 - OpenSCAD exit code 0;
-- a non-empty evaluated CSG tree;
+- a non-empty AST;
 - no missing include/use warning;
 - exact mechint and util revisions retained in machine-readable evidence.
 
-This proves the OpenSCAD parser/evaluator resolves mechint's library-local util
-source from the nested checkout. The heavier default lock-section is deliberately
-not repeated in every CI regression: it dominates runtime. Its actual
-`util_section_inspect()` execution is covered by the Windows desktop F6 gate.
+This proves the OpenSCAD parser resolves mechint's library-local util source
+from the nested checkout. Runtime execution is not duplicated in this CI probe:
+the actual default lock-section and `util_section_inspect()` execution are
+covered by the Windows desktop F6 gate.
 
 ## Windows local helper
 

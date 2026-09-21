@@ -18,7 +18,7 @@ bash scripts/dep-02-closure.sh
 }
 
 mkdir -p out
-rm -f out/dep-03-mechint.csg out/dep-03-openscad.log out/dep-03-engine.json
+rm -f out/dep-03-mechint.ast out/dep-03-openscad.log out/dep-03-engine.json
 
 echo "DEP-03: direct OpenSCAD engine resolution"
 echo "runtime=$runtime_image"
@@ -32,7 +32,7 @@ docker run --rm \
   -w /tmp \
   -e OPENSCADPATH= \
   "$runtime_image" \
-  bash -lc 'xvfb-run -a openscad --enable=object-function -D '\''view="male"'\'' -o /work/out/dep-03-mechint.csg /work/dsg/openscad/ext/lib.scad.mechint/main.scad' \
+  bash -lc 'openscad --enable=object-function -o /work/out/dep-03-mechint.ast /work/dsg/openscad/ext/lib.scad.mechint/main.scad' \
   > >(tee out/dep-03-openscad.log) 2>&1
 rc=$?
 set -e
@@ -42,8 +42,8 @@ if [[ $rc -ne 0 ]]; then
     exit "$rc"
 fi
 
-if [[ ! -s out/dep-03-mechint.csg ]]; then
-    echo "OpenSCAD did not produce a non-empty evaluated CSG tree." >&2
+if [[ ! -s out/dep-03-mechint.ast ]]; then
+    echo "OpenSCAD did not produce a non-empty AST." >&2
     exit 1
 fi
 
@@ -53,7 +53,7 @@ if grep -Eiq "(can't open|cannot open|could not open|unable to open).*(include|u
     exit 1
 fi
 
-output_bytes="$(stat -c '%s' out/dep-03-mechint.csg)"
+output_bytes="$(stat -c '%s' out/dep-03-mechint.ast)"
 source_sha="$(git rev-parse HEAD)"
 mechint_sha="$(git -C dsg/openscad/ext/lib.scad.mechint rev-parse HEAD)"
 util_sha="$(git -C dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util rev-parse HEAD)"
@@ -66,11 +66,10 @@ cat > out/dep-03-engine.json <<EOF
   "runtime_image": "$runtime_image",
   "working_directory": "/tmp",
   "openscadpath": "",
-  "view_override": "male",
-  "mechint_sha": "$mechint_sha",
+    "mechint_sha": "$mechint_sha",
   "util_sha": "$util_sha",
-  "evaluation": "csg",
-  "output": "out/dep-03-mechint.csg",
+  "evaluation": "ast",
+  "output": "out/dep-03-mechint.ast",
   "output_bytes": $output_bytes,
   "result": "pass"
 }
