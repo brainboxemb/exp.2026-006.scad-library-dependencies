@@ -7,12 +7,12 @@ cd "$root"
 provenance="bld/evidence/domain/dependency-provenance.json"
 execution="bld/evidence/executions/scad-build/execution.json"
 target="bld/stl/dep05-independent-pins.stl"
-expected_tool="78e26949c6f2397ed90bb7888c1386d3dd423312"
+expected_tool="70fd4162731484a949dc390e942dde8b8d811f10"
 expected_mechint="bdd39925f2ad391b32fad7ba56770053d4d5e2bc"
 expected_project_util="da1892a201c3bfc78a65e10df84d4a8d142ae8f6"
 expected_nested_util="5c88cd9b6b118d376825927ed67e26aff6eaee2d"
 
-python3 scripts/run_scad_build_with_provenance.py
+bash tools/tool.scad-project/scad-project.sh build
 
 test -s "$target"
 test -s "$provenance"
