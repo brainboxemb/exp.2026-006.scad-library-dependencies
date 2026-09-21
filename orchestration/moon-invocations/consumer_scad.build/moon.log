@@ -1,0 +1,54 @@
+[ WARN 2026-09-21 21:01:09.354] moon_app::queries::changed_files  Detected a shallow checkout, unable to run Git commands to determine changed files. 
+[ WARN 21:01:09.354] moon_app::queries::changed_files  A full Git history is required for affected checks, falling back to an empty files list. 
+▮▮▮▮ consumer:scad.build (e9f12482)
+SCons build engine: 3 target(s), cache=/work/.cache/scad-project/scons
++ scons -Q -f /work/tools/tool.scad-project/src/scad_project/scons_driver.py SCAD_PROJECT_MANIFEST=/work/.cache/scad-project/state/build-manifest.json
+_action(["bld/png/01-baseline-mechint.png"], ["dsg/openscad/render/01-baseline-mechint.scad", "dsg/openscad/main.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad"])
++ xvfb-run -a openscad --enable=object-function --render --autocenter --viewall --imgsize=1000,700 -o /work/bld/png/01-baseline-mechint.png /work/dsg/openscad/render/01-baseline-mechint.scad
+WARNING: Viewall and autocenter disabled in favor of $vp*
+Geometries in cache: 5
+Geometry cache size in bytes: 3664
+CGAL Polyhedrons in cache: 1
+CGAL cache size in bytes: 4000
+Total rendering time: 0:00:00.182
+   Top level object is a 3D object (manifold):
+   Status:     NoError
+   Genus:      0
+   Vertices:       16
+   Facets:         28
+SCons built: bld/png/01-baseline-mechint.png
+_action(["bld/stl/dep04-nested-discovery.stl"], ["dsg/openscad/dep04-nested-discovery.scad", "dsg/openscad/ext/lib.scad.mechint/main.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/reference/sliding_dovetail_reference.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/assemblies/sliding_dovetail_test_assembly.scad", "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/openscad/inspection.scad"])
++ openscad --enable=object-function -o /work/bld/stl/dep04-nested-discovery.stl /work/dsg/openscad/dep04-nested-discovery.scad
+Geometries in cache: 1
+Geometry cache size in bytes: 856
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.000
+Top level object is a 3D object (PolySet):
+   Convex:       yes
+   Facets:         6
+SCons built: bld/stl/dep04-nested-discovery.stl
+_action(["bld/stl/dep05-independent-pins.stl"], ["dsg/openscad/dep05-independent-pins.scad", "dsg/openscad/ext/lib.scad.util/openscad/transform.scad", "dsg/openscad/ext/lib.scad.mechint/main.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/reference/sliding_dovetail_reference.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/assemblies/sliding_dovetail_test_assembly.scad", "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/openscad/inspection.scad"])
++ openscad --enable=object-function -o /work/bld/stl/dep05-independent-pins.stl /work/dsg/openscad/dep05-independent-pins.scad
+WARNING: Viewall and autocenter disabled in favor of $vp*
+Geometries in cache: 30
+Geometry cache size in bytes: 23832
+CGAL Polyhedrons in cache: 15
+CGAL cache size in bytes: 156250
+Total rendering time: 0:00:00.008
+   Top level object is a 3D object (manifold):
+   Status:     NoError
+   Genus:      -2
+   Vertices:       56
+   Facets:        100
+SCons built: bld/stl/dep05-independent-pins.stl
+SCons summary: targets=3 built=3 cache-restored=0 current=0 error=0
+  built: bld/png/01-baseline-mechint.png
+  built: bld/stl/dep04-nested-discovery.stl
+  built: bld/stl/dep05-independent-pins.stl
+build: OK
+▮▮▮▮ consumer:scad.build (748ms, e9f12482)
+
+Tasks: 1 completed
+ Time: 813ms
+

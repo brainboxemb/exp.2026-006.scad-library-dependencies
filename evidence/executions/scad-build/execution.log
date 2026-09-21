@@ -1,0 +1,27 @@
+SCAD producer execution
+=======================
+
+Capability: scad.build
+Action: build
+Source revision: 85a30b56307d5fac72c6389b5e34c9812a6b6881
+Owner: brainboxemb/tool.scad-project
+Owner revision: 70fd4162731484a949dc390e942dde8b8d811f10
+tool.scad-project version: 0.15.2
+Status: success
+Producer started (UTC): 2026-09-21T21:01:09Z
+Producer finished (UTC): 2026-09-21T21:01:10Z
+Producer duration: 714 ms
+
+Domain evidence:
+- ../../domain/last-build.json
+- ../../domain/dependency-provenance.json
+
+Decision report kind: build
+Build engine: scons
+Targets: 3
+Outcomes: BUILT=3, CACHE_RESTORED=0, CURRENT=0, ERROR=0
+
+Target decisions:
+- BUILT: bld/png/01-baseline-mechint.png
+- BUILT: bld/stl/dep04-nested-discovery.stl
+- BUILT: bld/stl/dep05-independent-pins.stl

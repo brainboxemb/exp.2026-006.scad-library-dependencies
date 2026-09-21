@@ -1,0 +1,32 @@
+Publication context : pull_request
+Publication kind    : build
+Publication branch  : dev/pr-11/bld
+
+Source
+------
+Repository          : brainboxemb/exp.2026-006.scad-library-dependencies
+Ref type            : pull_request
+Ref                 : feature/pr-11-released-owner-regression
+Commit              : 85a30b56307d5fac72c6389b5e34c9812a6b6881
+Triggered by        : brainboxemb
+Workflow run        : https://github.com/brainboxemb/exp.2026-006.scad-library-dependencies/actions/runs/35654583247
+
+Tooling
+-------
+SCAD toolchain image: ghcr.io/brainboxemb/scad-toolchain-openscad:v0.6.1
+SCAD toolchain ver. : v0.6.1
+tool.scad-project   : v0.15.2
+
+Git submodules
+--------------
+dsg/openscad/ext/lib.scad.mechint : bdd39925f2ad391b32fad7ba56770053d4d5e2bc
+dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util : 5c88cd9b6b118d376825927ed67e26aff6eaee2d
+dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/tools/tool.git-project : 7c43f37e7b07cfb57638a1d1dad2501de09ba7eb
+dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/tools/tool.scad-project : 78e26949c6f2397ed90bb7888c1386d3dd423312
+dsg/openscad/ext/lib.scad.mechint/tools/tool.git-project : 7c43f37e7b07cfb57638a1d1dad2501de09ba7eb
+dsg/openscad/ext/lib.scad.mechint/tools/tool.scad-project : 78e26949c6f2397ed90bb7888c1386d3dd423312
+dsg/openscad/ext/lib.scad.util : da1892a201c3bfc78a65e10df84d4a8d142ae8f6
+dsg/openscad/ext/lib.scad.util/tools/tool.git-project : 7c43f37e7b07cfb57638a1d1dad2501de09ba7eb
+dsg/openscad/ext/lib.scad.util/tools/tool.scad-project : 78e26949c6f2397ed90bb7888c1386d3dd423312
+tools/tool.git-project : 9879da589101f41b2b0e634d196ddcc51e1a6102
+tools/tool.scad-project : 70fd4162731484a949dc390e942dde8b8d811f10
