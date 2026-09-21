@@ -1,0 +1,66 @@
+name: DEP-07 build dependency provenance
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+env:
+  SCAD_RUNTIME_IMAGE: ghcr.io/brainboxemb/scad-toolchain-openscad:v0.6.1
+
+jobs:
+  provenance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact source without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          submodules: false
+
+      - name: Bootstrap normal dependency flow
+        shell: bash
+        run: ./bootstrap.sh
+
+      - name: Pull released OpenSCAD runtime
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker pull "$SCAD_RUNTIME_IMAGE"
+          docker logout ghcr.io >/dev/null 2>&1 || true
+
+      - name: Qualify exact build dependency provenance
+        shell: bash
+        run: |
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            -e HOME=/tmp \
+            -e SCAD_TOOLCHAIN_IMAGE="$SCAD_RUNTIME_IMAGE" \
+            -e SCAD_TOOLCHAIN_VERSION=v0.6.1 \
+            -v "$PWD:/work" \
+            -w /work \
+            "$SCAD_RUNTIME_IMAGE" \
+            bash scripts/dep-07-provenance.sh
+
+      - name: Retain DEP-07 evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '### DEP-07 build dependency provenance'
+            echo
+            echo '~~~json'
+            if [[ -f out/dep-07-provenance.json ]]; then cat out/dep-07-provenance.json; else echo '{"result":"evidence file not produced"}'; fi
+            echo '~~~'
+          } >> "$GITHUB_STEP_SUMMARY"

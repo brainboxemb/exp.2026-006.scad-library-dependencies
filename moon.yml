@@ -12,7 +12,26 @@ tasks:
       - 'dsg/openscad/ext/**'
 
   scad.build:
+    script: 'python3 scripts/run_scad_build_with_provenance.py'
     inputs:
+      - 'project.yml'
+      - 'project.scad.yml'
+      - '.gitmodules'
+      - 'tools/tool.scad-project/scad-project.sh'
+      - 'tools/tool.scad-project/pyproject.toml'
+      - 'tools/tool.scad-project/src/**/*.py'
+      - 'tools/tool.scad-project/scripts/run_scad_capability.py'
       - 'dsg/openscad/**/*.scad'
       - 'dsg/openscad/**/render.yml'
       - 'dsg/openscad/ext/**'
+      - 'scripts/run_scad_build_with_provenance.py'
+      - 'scripts/write_scad_dependency_provenance.py'
+    outputs:
+      - 'bld/png/**'
+      - 'bld/svg/**'
+      - 'bld/stl/**'
+      - 'bld/drawing/**'
+      - 'bld/evidence/executions/scad-build/**'
+      - 'bld/evidence/domain/dependency-provenance.json'
+    options:
+      cache: true
