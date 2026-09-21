@@ -86,18 +86,18 @@ function Show-NestedStatus {
     if ($Dependency.Type -ne 'git-submodule') { continue }
     $Normalized=Normalize-RepoUrl $Dependency.Url
     if ($Lineage -contains $Normalized) {
-      if ($Depth -gt 0) { Write-Host ("nested {0,-20} CYCLE owner={1} path={2} ref={3}" -f $Dependency.Name,(Owner-Label $Owner),$Dependency.Path,$Dependency.Ref) }
+      if ($Depth -gt 0) { Write-Output ("nested {0,-20} CYCLE owner={1} path={2} ref={3}" -f $Dependency.Name,(Owner-Label $Owner),$Dependency.Path,$Dependency.Ref) }
       continue
     }
     $Entry=(& git -C $Owner ls-files --stage -- $Dependency.Path 2>$null) -join [Environment]::NewLine
     if ($Entry -notmatch '^160000\s+([0-9a-fA-F]{40})\s+') {
-      if ($Depth -gt 0) { Write-Host ("nested {0,-20} MISSING_GITLINK owner={1} path={2} ref={3}" -f $Dependency.Name,(Owner-Label $Owner),$Dependency.Path,$Dependency.Ref) }
+      if ($Depth -gt 0) { Write-Output ("nested {0,-20} MISSING_GITLINK owner={1} path={2} ref={3}" -f $Dependency.Name,(Owner-Label $Owner),$Dependency.Path,$Dependency.Ref) }
       continue
     }
     $Gitlink=$Matches[1]
     $FullPath=Join-Path $Owner $Dependency.Path
     if (-not (Test-RepoInitialized $FullPath)) {
-      if ($Depth -gt 0) { Write-Host ("nested {0,-20} UNINITIALIZED owner={1} path={2} gitlink={3} ref={4}" -f $Dependency.Name,(Owner-Label $Owner),$Dependency.Path,$Gitlink.Substring(0,12),$Dependency.Ref) }
+      if ($Depth -gt 0) { Write-Output ("nested {0,-20} UNINITIALIZED owner={1} path={2} gitlink={3} ref={4}" -f $Dependency.Name,(Owner-Label $Owner),$Dependency.Path,$Gitlink.Substring(0,12),$Dependency.Ref) }
       continue
     }
     $Current=(& git -C $FullPath rev-parse HEAD).Trim()
@@ -107,7 +107,7 @@ function Show-NestedStatus {
     elseif ($Expected -and $Current -eq $Expected) { $State="OK" }
     elseif ($Expected) { $State="DIFF" }
     else { $State="UNKNOWN" }
-    if ($Depth -gt 0) { Write-Host ("nested {0,-20} {1,-13} owner={2} path={3} current={4} ref={5}" -f $Dependency.Name,$State,(Owner-Label $Owner),$Dependency.Path,$Current.Substring(0,12),$Dependency.Ref) }
+    if ($Depth -gt 0) { Write-Output ("nested {0,-20} {1,-13} owner={2} path={3} current={4} ref={5}" -f $Dependency.Name,$State,(Owner-Label $Owner),$Dependency.Path,$Current.Substring(0,12),$Dependency.Ref) }
     Show-NestedStatus -Owner $FullPath -Lineage @($Lineage + $Normalized) -Depth ($Depth + 1)
   }
 }
