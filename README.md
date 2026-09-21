@@ -89,9 +89,13 @@ The work is architecture-first rather than a collection of unrelated checks:
    - both owner-local paths are present in the dependency graph;
    - combined OpenSCAD evaluation succeeds with empty `OPENSCADPATH`;
    - hiding either owner-local source fails at that owner instead of falling back to the other copy.
-6. **DEP-06 — status/update**
-   - make nested state, desired refs and updates understandable and safe.
-7. **DEP-07 — provenance**
+6. **DEP-06 — status/update — qualified**
+   - full owner/path/ref status is available through the normal update entrypoint;
+   - dirty nested dependencies block update;
+   - owner-specific pin changes remain independent;
+   - uninitialized nested dependencies are reported and restored by normal update;
+   - unrelated local paths are not silently removed.
+7. **DEP-07 — provenance — active**
    - retain the exact nested revisions actually used by build/publication
      evidence.
 
