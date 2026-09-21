@@ -64,7 +64,8 @@ closure instead of `git submodule update --recursive`.
 - Ubuntu 24.04 through the POSIX bootstrap launcher;
 - Windows Server 2025 through the PowerShell bootstrap launcher.
 
-Each job asserts exact gitlinks/revisions and writes a machine-readable
+Each job checks out the exact pull-request head (or exact event SHA outside a PR),
+asserts exact gitlinks/revisions and writes a machine-readable
 `dep-01-baseline.json` into the GitHub Actions run summary.
 
 The normal SCAD production workflow runs separately against the same source and
