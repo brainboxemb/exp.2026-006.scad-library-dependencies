@@ -1,0 +1,59 @@
+name: DEP-03 OpenSCAD local path
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+env:
+  SCAD_RUNTIME_IMAGE: ghcr.io/brainboxemb/scad-toolchain-openscad:v0.6.1
+
+jobs:
+  engine:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact source without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          submodules: false
+
+      - name: Pull released OpenSCAD runtime
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker pull "$SCAD_RUNTIME_IMAGE"
+          docker logout ghcr.io >/dev/null 2>&1 || true
+
+      - name: Qualify library-local OpenSCAD resolution
+        shell: bash
+        run: bash scripts/dep-03-engine.sh
+
+      - name: Retain engine evidence in run summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '### DEP-03 engine evidence'
+            echo
+            echo 'Direct target: `dsg/openscad/ext/lib.scad.mechint/main.scad`'
+            echo
+            echo 'Working directory: `/tmp`; `OPENSCADPATH` explicitly empty.'
+            echo
+            echo '```json'
+            if [[ -f out/dep-03-engine.json ]]; then cat out/dep-03-engine.json; else echo '{"result":"evidence file not produced"}'; fi
+            echo '```'
+            echo
+            echo '> This is engine/path evidence only. Windows desktop OpenSCAD acceptance remains a separate manual gate.'
+          } >> "$GITHUB_STEP_SUMMARY"
