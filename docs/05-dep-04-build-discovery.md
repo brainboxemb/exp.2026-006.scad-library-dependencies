@@ -39,4 +39,4 @@ This proves precise transitive build invalidation rather than broad rebuilding.
 
 ## Status
 
-Pending first qualifying run.
+**Qualified.** Exact source `a6578ec7b07535b4e4fbd7f6501db111b29f4e7b`; DEP-04 run `35640296002` and normal SCAD production run `35640296729` are green. The nested util source is recorded as an SCons input and only the dependent DEP-04 target rebuilt after the nested source changed.

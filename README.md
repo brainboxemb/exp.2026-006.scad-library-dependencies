@@ -80,12 +80,15 @@ The work is architecture-first rather than a collection of unrelated checks:
    - library-local resolution proved in CI with an empty `OPENSCADPATH`;
    - direct nested `lib.scad.mechint/main.scad` open + F6 passed in Windows desktop OpenSCAD on 2026-09-21;
    - no global library install or wrapper launch.
-4. **DEP-04 — CI/build discovery**
-   - prove the nested source participates correctly in SCAD dependency
-     discovery and execution.
-5. **DEP-05 — independent pins**
-   - prove a consumer and a nested library can independently pin the same
-     foundation library without ambiguous resolution.
+4. **DEP-04 — CI/build discovery — qualified**
+   - nested util is recorded as a precise SCons input and invalidates only its dependent target;
+   - normal reusable SCAD production is green with the SCons build graph;
+   - merged baseline `a6bf46d4a024e81b6d5f7f1330f57a8fadd1312c`.
+5. **DEP-05 — independent pins — qualified**
+   - project-owned `lib.scad.util v0.2.0` and mechint-owned nested `v0.1.0` coexist;
+   - both owner-local paths are present in the dependency graph;
+   - combined OpenSCAD evaluation succeeds with empty `OPENSCADPATH`;
+   - hiding either owner-local source fails at that owner instead of falling back to the other copy.
 6. **DEP-06 — status/update**
    - make nested state, desired refs and updates understandable and safe.
 7. **DEP-07 — provenance**
