@@ -1,0 +1,1 @@
+extends: '../../tools/tool.scad-project/moon/tasks/scad.yml'

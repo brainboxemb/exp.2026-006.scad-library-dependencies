@@ -1,0 +1,38 @@
+paths:
+  design_root: dsg
+  build_root: bld
+  render_root: dsg/openscad/render
+
+design:
+  include_externals: false
+
+build_engine:
+  engine: direct
+
+openscad:
+  common_flags:
+    - --enable=object-function
+  render_flags:
+    - --render
+  image_size: [1000, 700]
+  design_image_size: [640, 480]
+
+externals:
+  - name: lib.scad.mechint
+    required_file: openscad/sliding-dovetail/sliding_dovetail.scad
+
+publication:
+  production:
+    source_branch: main
+    build_branch: prod/bld
+    verification_branch: prod/vrf
+
+  development:
+    pr_branch_prefix: dev/pr
+
+  tags:
+    pattern: "v*"
+
+  release:
+    branch_prefix: rel
+    tag_pattern: "v*"

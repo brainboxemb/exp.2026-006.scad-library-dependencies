@@ -1,0 +1,70 @@
+name: DEP-01 direct-only baseline
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          submodules: false
+
+      - name: Qualify released direct-only baseline
+        shell: bash
+        run: bash scripts/dep-01-baseline.sh
+
+      - name: Retain evidence in run summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '### DEP-01 Linux evidence'
+            echo
+            echo '```json'
+            if [[ -f out/dep-01-baseline.json ]]; then
+              cat out/dep-01-baseline.json
+            else
+              echo '{"result":"evidence file not produced"}'
+            fi
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  windows:
+    runs-on: windows-2025
+    timeout-minutes: 10
+    steps:
+      - name: Checkout without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          submodules: false
+
+      - name: Qualify released direct-only baseline
+        shell: pwsh
+        run: .\scripts\dep-01-baseline.ps1
+
+      - name: Retain evidence in run summary
+        if: always()
+        shell: pwsh
+        run: |
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "### DEP-01 Windows evidence"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ""
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```json'
+          if (Test-Path "out/dep-01-baseline.json") {
+              Get-Content "out/dep-01-baseline.json" | Add-Content -Path $env:GITHUB_STEP_SUMMARY
+          } else {
+              Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '{"result":"evidence file not produced"}'
+          }
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'

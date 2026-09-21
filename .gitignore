@@ -1,0 +1,12 @@
+bld/
+vrf/out/
+out/
+.cache/
+.moon/cache/
+.moon/invocations/
+*.scad~
+*.bak
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

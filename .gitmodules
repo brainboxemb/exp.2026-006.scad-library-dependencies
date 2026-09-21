@@ -1,0 +1,11 @@
+[submodule "tools/tool.git-project"]
+	path = tools/tool.git-project
+	url = https://github.com/brainboxemb/tool.git-project.git
+
+[submodule "tools/tool.scad-project"]
+	path = tools/tool.scad-project
+	url = https://github.com/brainboxemb/tool.scad-project.git
+
+[submodule "dsg/openscad/ext/lib.scad.mechint"]
+	path = dsg/openscad/ext/lib.scad.mechint
+	url = https://github.com/brainboxemb/lib.scad.mechint.git
