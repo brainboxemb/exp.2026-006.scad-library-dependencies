@@ -72,5 +72,9 @@ The normal SCAD production workflow runs separately against the same source and
 builds the minimal public `lib.scad.mechint` consumer. That confirms the
 before-state is a real CAD consumer rather than only a synthetic Git test.
 
-Run IDs and the exact qualifying source commit are added here after the first
-green execution.
+Qualified evidence:
+
+- exact source: `0da1cad91375e00e52e2faa05bb7fb23ab683b85`;
+- DEP-01 run `35627213898` — Linux and Windows green;
+- SCAD production run `35627215062` — green with released `tool.scad-project v0.15.0`;
+- merged baseline: `8cc2f7d25b6a66544c7802af7da7664fc625a9c9`.
