@@ -1,0 +1,32 @@
+[ WARN 2026-09-21 19:37:35.645] moon_app::queries::changed_files  Detected a shallow checkout, unable to run Git commands to determine changed files. 
+[ WARN 19:37:35.645] moon_app::queries::changed_files  A full Git history is required for affected checks, falling back to an empty files list. 
+▮▮▮▮ consumer:scad.build (f7bfed8a)
+SCons build engine: 3 target(s), cache=/work/.cache/scad-project/scons
++ scons -Q -f /work/tools/tool.scad-project/src/scad_project/scons_driver.py SCAD_PROJECT_MANIFEST=/work/.cache/scad-project/state/build-manifest.json
+Retrieved `bld/png/01-baseline-mechint.png' from cache
+Retrieved `bld/stl/dep04-nested-discovery.stl' from cache
+_action(["bld/stl/dep05-independent-pins.stl"], ["dsg/openscad/dep05-independent-pins.scad", "dsg/openscad/ext/lib.scad.util/openscad/transform.scad", "dsg/openscad/ext/lib.scad.mechint/main.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/reference/sliding_dovetail_reference.scad", "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/assemblies/sliding_dovetail_test_assembly.scad", "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/openscad/inspection.scad"])
++ openscad --enable=object-function -o /work/bld/stl/dep05-independent-pins.stl /work/dsg/openscad/dep05-independent-pins.scad
+WARNING: Viewall and autocenter disabled in favor of $vp*
+Geometries in cache: 30
+Geometry cache size in bytes: 23832
+CGAL Polyhedrons in cache: 15
+CGAL cache size in bytes: 156250
+Total rendering time: 0:00:00.006
+   Top level object is a 3D object (manifold):
+   Status:     NoError
+   Genus:      -2
+   Vertices:       56
+   Facets:        100
+SCons built: bld/stl/dep05-independent-pins.stl
+SCons summary: targets=3 built=1 cache-restored=2 current=0 error=0
+  cache_restored: bld/png/01-baseline-mechint.png
+  cache_restored: bld/stl/dep04-nested-discovery.stl
+  built: bld/stl/dep05-independent-pins.stl
+build: OK
+Dependency provenance: bld/evidence/domain/dependency-provenance.json
+▮▮▮▮ consumer:scad.build (370ms, f7bfed8a)
+
+Tasks: 1 completed
+ Time: 411ms
+
