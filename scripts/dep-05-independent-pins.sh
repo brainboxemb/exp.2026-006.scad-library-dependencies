@@ -46,7 +46,11 @@ run_csg() {
 }
 
 echo 'DEP-05: combined evaluation with both pins present'
-run_csg out/dep-05-both.csg out/dep-05-both.log
+if ! run_csg out/dep-05-both.csg out/dep-05-both.log; then
+  echo 'Combined evaluation failed:' >&2
+  cat out/dep-05-both.log >&2
+  exit 1
+fi
 test -s out/dep-05-both.csg
 if grep -Eiq "can't open|cannot open|could not open|unknown module" out/dep-05-both.log; then
   cat out/dep-05-both.log >&2
