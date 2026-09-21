@@ -32,7 +32,7 @@ docker run --rm \
   -w /tmp \
   -e OPENSCADPATH= \
   "$runtime_image" \
-  bash -lc 'xvfb-run -a openscad --enable=object-function -o /work/out/dep-03-mechint.csg /work/dsg/openscad/ext/lib.scad.mechint/main.scad' \
+  bash -lc 'xvfb-run -a openscad --enable=object-function -D '\''view="male"'\'' -o /work/out/dep-03-mechint.csg /work/dsg/openscad/ext/lib.scad.mechint/main.scad' \
   > >(tee out/dep-03-openscad.log) 2>&1
 rc=$?
 set -e
@@ -66,6 +66,7 @@ cat > out/dep-03-engine.json <<EOF
   "runtime_image": "$runtime_image",
   "working_directory": "/tmp",
   "openscadpath": "",
+  "view_override": "male",
   "mechint_sha": "$mechint_sha",
   "util_sha": "$util_sha",
   "evaluation": "csg",
