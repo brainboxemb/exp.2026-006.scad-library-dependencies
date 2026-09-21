@@ -28,4 +28,13 @@ With both files restored, combined evaluation must pass and both submodule workt
 
 ## Status
 
-Pending first qualifying run.
+**Qualified.** Exact source `de05e8872eaa0f6246b0d8acfb990bd148815507`.
+
+Evidence:
+- DEP-05 run `35641686171` — green;
+- project util: `v0.2.0` / `da1892a201c3bfc78a65e10df84d4a8d142ae8f6`;
+- mechint-owned nested util: `v0.1.0` / `5c88cd9b6b118d376825927ed67e26aff6eaee2d`;
+- combined evaluation: PASS;
+- project fallback to nested util: false;
+- nested fallback to project util: false;
+- DEP-01, DEP-02, DEP-03, DEP-04, normal entrypoints and SCAD production all green on the same source.

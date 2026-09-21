@@ -84,9 +84,11 @@ The work is architecture-first rather than a collection of unrelated checks:
    - nested util is recorded as a precise SCons input and invalidates only its dependent target;
    - normal reusable SCAD production is green with the SCons build graph;
    - merged baseline `a6bf46d4a024e81b6d5f7f1330f57a8fadd1312c`.
-5. **DEP-05 — independent pins — active**
-   - project pins `lib.scad.util v0.2.0` while mechint keeps nested `v0.1.0`;
-   - prove both copies resolve owner-locally without fallback/search-path aliasing.
+5. **DEP-05 — independent pins — qualified**
+   - project-owned `lib.scad.util v0.2.0` and mechint-owned nested `v0.1.0` coexist;
+   - both owner-local paths are present in the dependency graph;
+   - combined OpenSCAD evaluation succeeds with empty `OPENSCADPATH`;
+   - hiding either owner-local source fails at that owner instead of falling back to the other copy.
 6. **DEP-06 — status/update**
    - make nested state, desired refs and updates understandable and safe.
 7. **DEP-07 — provenance**
