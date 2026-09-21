@@ -1,0 +1,20 @@
+[ WARN 2026-09-21 16:42:08.385] moon_app::queries::changed_files  Detected a shallow checkout, unable to run Git commands to determine changed files. 
+[ WARN 16:42:08.385] moon_app::queries::changed_files  A full Git history is required for affected checks, falling back to an empty files list. 
+consumer:scad.build | + xvfb-run -a openscad --enable=object-function --render --autocenter --viewall --imgsize=1000,700 -o /work/bld/png/01-baseline-mechint.png /work/dsg/openscad/render/01-baseline-mechint.scad
+consumer:scad.build | WARNING: Viewall and autocenter disabled in favor of $vp*
+consumer:scad.build | Geometries in cache: 5
+consumer:scad.build | Geometry cache size in bytes: 3664
+consumer:scad.build | CGAL Polyhedrons in cache: 1
+consumer:scad.build | CGAL cache size in bytes: 4000
+consumer:scad.build | Total rendering time: 0:00:00.175
+consumer:scad.build |    Top level object is a 3D object (manifold):
+consumer:scad.build |    Status:     NoError
+consumer:scad.build |    Genus:      0
+consumer:scad.build |    Vertices:       16
+consumer:scad.build |    Facets:         28
+consumer:scad.build | build: OK
+▮▮▮▮ consumer:scad.build (cached, 6a197367)
+
+Tasks: 1 completed (1 cached)
+ Time: 37ms ❯❯❯❯ to the moon
+

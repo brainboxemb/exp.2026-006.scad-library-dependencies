@@ -1,0 +1,9 @@
+[ WARN 2026-09-21 16:42:07.023] moon_app::queries::changed_files  Detected a shallow checkout, unable to run Git commands to determine changed files. 
+[ WARN 16:42:07.023] moon_app::queries::changed_files  A full Git history is required for affected checks, falling back to an empty files list. 
+consumer:scad.docs | Generated design documentation: bld/design
+consumer:scad.docs | design build: OK
+▮▮▮▮ consumer:scad.docs (cached, d1932250)
+
+Tasks: 1 completed (1 cached)
+ Time: 30ms ❯❯❯❯ to the moon
+

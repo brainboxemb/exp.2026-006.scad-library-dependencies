@@ -1,0 +1,15 @@
+SCAD producer execution
+=======================
+
+Capability: scad.docs
+Action: design-build
+Source revision: a220c54811e2329cd854bce1b2e50795a8af0476
+Owner: brainboxemb/tool.scad-project
+Owner revision: 78e26949c6f2397ed90bb7888c1386d3dd423312
+tool.scad-project version: 0.15.0
+Status: success
+Producer started (UTC): 2026-09-21T16:40:42Z
+Producer finished (UTC): 2026-09-21T16:40:42Z
+Producer duration: 112 ms
+
+Domain evidence: no structured SCons decision report for this execution.

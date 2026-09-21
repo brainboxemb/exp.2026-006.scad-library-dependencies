@@ -1,0 +1,27 @@
+Publication context : pull_request
+Publication kind    : build
+Publication branch  : dev/pr-1/bld
+
+Source
+------
+Repository          : brainboxemb/exp.2026-006.scad-library-dependencies
+Ref type            : pull_request
+Ref                 : feature/pr-1-baseline-dependency-fixture
+Commit              : 0da1cad91375e00e52e2faa05bb7fb23ab683b85
+Triggered by        : brainboxemb
+Workflow run        : https://github.com/brainboxemb/exp.2026-006.scad-library-dependencies/actions/runs/35627215062
+
+Tooling
+-------
+SCAD toolchain image: ghcr.io/brainboxemb/scad-toolchain-openscad:v0.6.1
+SCAD toolchain ver. : v0.6.1
+tool.scad-project   : v0.15.0
+
+Git submodules
+--------------
+dsg/openscad/ext/lib.scad.mechint : bdd39925f2ad391b32fad7ba56770053d4d5e2bc
+dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util : 5c88cd9b6b118d376825927ed67e26aff6eaee2d
+dsg/openscad/ext/lib.scad.mechint/tools/tool.git-project : 7c43f37e7b07cfb57638a1d1dad2501de09ba7eb
+dsg/openscad/ext/lib.scad.mechint/tools/tool.scad-project : 78e26949c6f2397ed90bb7888c1386d3dd423312
+tools/tool.git-project : 7c43f37e7b07cfb57638a1d1dad2501de09ba7eb
+tools/tool.scad-project : 78e26949c6f2397ed90bb7888c1386d3dd423312
