@@ -29,7 +29,7 @@ not merely checking that an unused include happens to parse.
 
 `DEP-03 OpenSCAD local path` first replays DEP-02, then runs the released
 `scad-toolchain-openscad:v0.6.1` engine directly against the nested
-`lib.scad.mechint/main.scad`.
+`lib.scad.mechint/main.scad` and writes the fully evaluated CSG tree.
 
 The invocation deliberately removes two possible accidental resolution paths:
 
@@ -39,12 +39,15 @@ The invocation deliberately removes two possible accidental resolution paths:
 A pass requires:
 
 - OpenSCAD exit code 0;
-- a non-empty STL;
+- a non-empty evaluated CSG tree;
 - no missing include/use warning;
 - exact mechint and util revisions retained in machine-readable evidence.
 
-This proves the OpenSCAD engine can resolve mechint's dependency through the
-library-local checkout layout.
+This proves the OpenSCAD parser/evaluator can resolve and execute mechint's
+utility dependency through the library-local checkout layout. A full CGAL/F6
+render is deliberately not repeated in every CI regression: the first attempt
+showed that it dominates runtime, while the Windows desktop F6 result remains
+an explicit acceptance gate.
 
 ## Windows local helper
 
