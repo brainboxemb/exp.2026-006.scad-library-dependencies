@@ -79,7 +79,25 @@ Prove:
 
 Use deliberately distinguishable revisions only when the testcase requires it.
 
-## DEP-06 — status and update
+## Normal developer entrypoint acceptance
+
+The experiment-only `dep-0x-*` and `prototype/*` scripts are test harnesses, not
+the intended developer interface. Before production adoption, the qualified
+model must be reachable through the normal repository entrypoints:
+
+```text
+bootstrap.ps1 / bootstrap.sh
+update-repo.ps1 / update-repo.sh
+```
+
+A consumer must not need to know that a transitive dependency closure exists or
+run a separate dependency-specific script. The substantial traversal logic
+belongs in `tool.git-project`; the root launchers remain thin delegates.
+
+This requirement is exercised explicitly by DEP-06 and is a completion gate for
+the PoP-to-production handoff.
+
+## DEP-06 — status, update and normal entrypoints
 
 Qualify understandable operations for the complete dependency closure.
 
@@ -90,6 +108,10 @@ Questions:
 - does updating one owner change only its owned pin?
 - how are removed dependencies cleaned or reported?
 - what happens when the same repository appears at two different nested paths?
+- does a clean clone reach the complete qualified dependency state through only
+  the normal root `bootstrap` launcher?
+- does `update-repo` update/report the complete qualified dependency closure
+  without a separate PoP/prototype command?
 
 ## DEP-07 — provenance
 

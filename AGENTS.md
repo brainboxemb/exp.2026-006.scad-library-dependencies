@@ -36,6 +36,11 @@ Keep production ownership separate:
 Prototype logic may live here long enough to qualify behaviour. Do not silently
 turn an experiment workaround into a production contract.
 
+The `dep-0x-*` and `prototype/*` scripts are test harnesses only. They must not
+become the normal consumer UX. The qualified end state is thin root
+`bootstrap.*` / `update-repo.*` launchers delegating all substantial transitive
+dependency handling to `tool.git-project`.
+
 ## Baseline before correction
 
 DEP-01 must retain the released direct-only behaviour before a transitive

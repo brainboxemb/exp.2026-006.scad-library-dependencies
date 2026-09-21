@@ -69,16 +69,17 @@ Do not modify `lib.scad.mechint` merely to manufacture a PoP dependency.
 
 The work is architecture-first rather than a collection of unrelated checks:
 
-1. **DEP-01 — baseline direct bootstrap**
-   - bootstrap this consumer using the released tooling;
-   - retain evidence of which direct and nested dependencies exist afterward;
-   - prove the current direct-only boundary.
-2. **DEP-02 — transitive runtime/external closure**
-   - prototype the smallest rule that follows intended library dependencies;
-   - do not recursively initialize unrelated tooling/development dependencies.
-3. **DEP-03 — desktop OpenSCAD**
-   - after bootstrap, directly open a nested library SCAD entrypoint on Windows;
-   - no permanent `OPENSCADPATH`, global library install or wrapper launch.
+1. **DEP-01 — baseline direct bootstrap — qualified**
+   - released direct-only behaviour proved on Linux and Windows;
+   - merged baseline `8cc2f7d25b6a66544c7802af7da7664fc625a9c9`.
+2. **DEP-02 — transitive runtime/external closure — qualified**
+   - controlled `role: external` traversal proved on Linux and Windows;
+   - nested tooling remains uninitialized;
+   - merged baseline `5385f797ea549c39f075da11e3fa838350e5e44c`.
+3. **DEP-03 — desktop OpenSCAD — active**
+   - automatically prove library-local OpenSCAD resolution with an empty `OPENSCADPATH`;
+   - then directly open the same nested library entrypoint in Windows desktop OpenSCAD;
+   - no global library install or wrapper launch.
 4. **DEP-04 — CI/build discovery**
    - prove the nested source participates correctly in SCAD dependency
      discovery and execution.

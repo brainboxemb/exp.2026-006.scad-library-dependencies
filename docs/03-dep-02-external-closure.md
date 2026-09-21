@@ -64,4 +64,10 @@ two independent sibling paths with different owner pins.
 Windows. It first replays DEP-01, then applies the external closure, then
 asserts that only the intended nested library worktree became initialized.
 
-Exact source/run evidence is added after the first green execution.
+Qualified evidence:
+
+- exact source: `2a01614301aa38c298389f8f961ad4708111b93b`;
+- DEP-01 regression run `35627708195` — Linux and Windows green;
+- DEP-02 run `35627708512` — Linux and Windows green;
+- SCAD production run `35627709234` — green;
+- merged DEP-02 baseline: `5385f797ea549c39f075da11e3fa838350e5e44c`.
