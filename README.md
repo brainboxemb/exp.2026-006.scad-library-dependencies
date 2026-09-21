@@ -3,7 +3,7 @@
 Proof of Principle for transitive OpenSCAD library dependencies, bootstrap
 behaviour, version pinning, desktop usability and dependency provenance.
 
-Status: **active**
+Status: **complete**
 
 Cross-project record:
 `brainboxemb/brainboxemb.meta/experiments/006-transitive-scad-library-dependencies`.
@@ -95,9 +95,14 @@ The work is architecture-first rather than a collection of unrelated checks:
    - owner-specific pin changes remain independent;
    - uninitialized nested dependencies are reported and restored by normal update;
    - unrelated local paths are not silently removed.
-7. **DEP-07 — provenance — active**
-   - retain the exact nested revisions actually used by build/publication
-     evidence.
+7. **DEP-07 — provenance — qualified**
+   - normal SCons target provenance retains only dependencies actually present in
+     the target source graph;
+   - project-owned `lib.scad.util v0.2.0`, direct `lib.scad.mechint v0.1.6`
+     and mechint-owned nested `lib.scad.util v0.1.0` remain independently
+     identifiable by owner/path/ref/exact revision;
+   - normal Moon/SCAD production retains the provenance file inside the Build
+     publication tree.
 
 The qualification cases are acceptance boundaries around one dependency model;
 they are not seven independent implementations.
@@ -116,6 +121,18 @@ In the experiment these entrypoints now add the qualified transitive external
 closure after the released generic direct dependency operation. This is the
 candidate user experience; the substantial traversal logic still needs to move
 into `tool.git-project` before production adoption.
+
+## Completion
+
+Experiment 006 is complete. Final qualification source
+`16f36faf2ff9e2c19f5df6d23121c46ca9c33af4` passed DEP-01 through DEP-07;
+DEP-07 run `35645913457` and normal SCAD production run `35645914291` are
+green. The qualified result was merged to main as
+`035a9233f4ef99ad468c3ed0ab288f4772654922`.
+
+The repository remains a reusable regression lab. Production adoption is tracked
+centrally as **Migration 008 — proposed / inactive** in `brainboxemb.meta`;
+completion of this PoP does not activate that migration.
 
 ## Current released baselines
 
