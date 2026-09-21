@@ -1,0 +1,64 @@
+name: DEP-05 independent util pins
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+env:
+  SCAD_RUNTIME_IMAGE: ghcr.io/brainboxemb/scad-toolchain-openscad:v0.6.1
+
+jobs:
+  independent-pins:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact source without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          submodules: false
+
+      - name: Bootstrap normal dependency flow
+        shell: bash
+        run: ./bootstrap.sh
+
+      - name: Pull released OpenSCAD runtime
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker pull "$SCAD_RUNTIME_IMAGE"
+          docker logout ghcr.io >/dev/null 2>&1 || true
+
+      - name: Qualify independent util pins
+        shell: bash
+        run: |
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            -e HOME=/tmp \
+            -v "$PWD:/work" \
+            -w /work \
+            "$SCAD_RUNTIME_IMAGE" \
+            bash scripts/dep-05-independent-pins.sh
+
+      - name: Retain DEP-05 evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '### DEP-05 independent util pins'
+            echo
+            echo '```json'
+            if [[ -f out/dep-05-independent-pins.json ]]; then cat out/dep-05-independent-pins.json; else echo '{"result":"evidence file not produced"}'; fi
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
