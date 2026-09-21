@@ -7,7 +7,7 @@ design:
   include_externals: false
 
 build_engine:
-  engine: direct
+  engine: scons
 
 openscad:
   common_flags:
@@ -16,6 +16,11 @@ openscad:
     - --render
   image_size: [1000, 700]
   design_image_size: [640, 480]
+
+builds:
+  - name: dep04-nested-discovery
+    source: dsg/openscad/dep04-nested-discovery.scad
+    output: bld/stl/dep04-nested-discovery.stl
 
 externals:
   - name: lib.scad.mechint
