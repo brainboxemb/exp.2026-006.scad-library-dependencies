@@ -12,7 +12,7 @@ tasks:
       - 'dsg/openscad/ext/**'
 
   scad.build:
-    command: 'python3 scripts/run_scad_build_with_provenance.py'
+    script: 'python3 scripts/run_scad_build_with_provenance.py'
     inputs:
       - 'project.yml'
       - 'project.scad.yml'
