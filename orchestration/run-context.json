@@ -1,0 +1,16 @@
+{
+  "base_revision": "423277128e42ba06e532c01cf48635b41975e528",
+  "event_name": "pull_request",
+  "publication_family": "build",
+  "repository": "brainboxemb/exp.2026-006.scad-library-dependencies",
+  "run_attempt": "1",
+  "run_id": "35640296729",
+  "schema": "brainboxemb.scad-orchestration-run-context",
+  "schema_version": 1,
+  "snapshot_preparation": {
+    "duration_ms": 1,
+    "finished_at": "2026-09-21T18:44:51.419Z",
+    "started_at": "2026-09-21T18:44:51.418Z"
+  },
+  "source_revision": "a6578ec7b07535b4e4fbd7f6501db111b29f4e7b"
+}

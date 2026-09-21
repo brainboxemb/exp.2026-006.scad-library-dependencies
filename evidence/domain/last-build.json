@@ -1,0 +1,62 @@
+{
+  "backend_signature": "2c4943357828741994760cbcff0047065dce49715b62822537d0bb5e0c97c128",
+  "engine": "scons",
+  "kind": "build",
+  "manifest_schema_version": 1,
+  "outcome_counts": {
+    "BUILT": 2,
+    "CACHE_RESTORED": 0,
+    "CURRENT": 0,
+    "ERROR": 0
+  },
+  "provenance": {
+    "cache": {
+      "exact_hit": null,
+      "matched_key": null,
+      "namespace": null,
+      "primary_key": null
+    },
+    "source_commit_sha": "a6578ec7b07535b4e4fbd7f6501db111b29f4e7b",
+    "tool_commit_sha": "78e26949c6f2397ed90bb7888c1386d3dd423312",
+    "tool_version": "0.15.0",
+    "toolchain_image": "ghcr.io/brainboxemb/scad-toolchain-openscad:v0.6.1",
+    "toolchain_version": "v0.6.1",
+    "workflow_version": "v0.15.0"
+  },
+  "schema": "scad-project.build-decisions",
+  "schema_version": 1,
+  "target_count": 2,
+  "targets": [
+    {
+      "action_executed": true,
+      "existed_before": false,
+      "exists_after": true,
+      "outcome": "BUILT",
+      "output": "bld/png/01-baseline-mechint.png",
+      "sources": [
+        "dsg/openscad/render/01-baseline-mechint.scad",
+        "dsg/openscad/main.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad"
+      ],
+      "target_spec_digest": "c80e561746627b7435646784fb7c84d119d6ceb93058661c103f7e381edaa877"
+    },
+    {
+      "action_executed": true,
+      "existed_before": false,
+      "exists_after": true,
+      "outcome": "BUILT",
+      "output": "bld/stl/dep04-nested-discovery.stl",
+      "sources": [
+        "dsg/openscad/dep04-nested-discovery.scad",
+        "dsg/openscad/ext/lib.scad.mechint/main.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/reference/sliding_dovetail_reference.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/assemblies/sliding_dovetail_test_assembly.scad",
+        "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/openscad/inspection.scad"
+      ],
+      "target_spec_digest": "c85cb579447be0260cfcdb6c45d9c53ca2150fe0c24e42831bf1d6a1233a7138"
+    }
+  ]
+}
