@@ -1,0 +1,77 @@
+name: Normal dependency entrypoints
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact source without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          submodules: false
+
+      - name: Bootstrap through normal root entrypoint
+        shell: bash
+        run: ./bootstrap.sh
+
+      - name: Assert qualified closure
+        shell: bash
+        run: bash scripts/assert-qualified-closure.sh
+
+      - name: Update through normal root entrypoint
+        shell: bash
+        run: ./update-repo.sh
+
+      - name: Assert update is idempotent and closure remains qualified
+        shell: bash
+        run: |
+          bash scripts/assert-qualified-closure.sh
+          test -z "$(git status --porcelain)" || {
+            echo 'Pinned update unexpectedly changed the worktree:' >&2
+            git status --short >&2
+            exit 1
+          }
+
+  windows:
+    runs-on: windows-2025
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact source without submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          submodules: false
+
+      - name: Bootstrap through normal root entrypoint
+        shell: pwsh
+        run: .\bootstrap.ps1
+
+      - name: Assert qualified closure
+        shell: pwsh
+        run: .\scripts\assert-qualified-closure.ps1
+
+      - name: Update through normal root entrypoint
+        shell: pwsh
+        run: .\update-repo.ps1
+
+      - name: Assert update is idempotent and closure remains qualified
+        shell: pwsh
+        run: |
+          .\scripts\assert-qualified-closure.ps1
+          $Dirty = (& git status --porcelain) -join [Environment]::NewLine
+          if ($Dirty) {
+              Write-Error ("Pinned update unexpectedly changed the worktree:" + [Environment]::NewLine + $Dirty)
+          }
