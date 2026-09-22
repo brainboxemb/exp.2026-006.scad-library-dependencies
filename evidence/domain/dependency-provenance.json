@@ -1,0 +1,113 @@
+{
+  "build_manifest": ".cache/scad-project/state/build-manifest.json",
+  "schema": "brainboxemb.scad-build-dependency-provenance",
+  "schema_version": 1,
+  "source_revision": "c4f4690c6850fbe44395017ef81f43a0a7121629",
+  "targets": [
+    {
+      "dependencies": [
+        {
+          "declared_ref": "v0.1.6",
+          "dependency_path": "dsg/openscad/ext/lib.scad.mechint",
+          "depth": 1,
+          "name": "lib.scad.mechint",
+          "owner_path": ".",
+          "repository": "https://github.com/brainboxemb/lib.scad.mechint",
+          "revision": "bdd39925f2ad391b32fad7ba56770053d4d5e2bc",
+          "used_sources": [
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad"
+          ],
+          "worktree_path": "dsg/openscad/ext/lib.scad.mechint"
+        }
+      ],
+      "output": "bld/png/01-baseline-mechint.png",
+      "source": "dsg/openscad/render/01-baseline-mechint.scad"
+    },
+    {
+      "dependencies": [
+        {
+          "declared_ref": "v0.1.6",
+          "dependency_path": "dsg/openscad/ext/lib.scad.mechint",
+          "depth": 1,
+          "name": "lib.scad.mechint",
+          "owner_path": ".",
+          "repository": "https://github.com/brainboxemb/lib.scad.mechint",
+          "revision": "bdd39925f2ad391b32fad7ba56770053d4d5e2bc",
+          "used_sources": [
+            "dsg/openscad/ext/lib.scad.mechint/main.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/assemblies/sliding_dovetail_test_assembly.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/reference/sliding_dovetail_reference.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad"
+          ],
+          "worktree_path": "dsg/openscad/ext/lib.scad.mechint"
+        },
+        {
+          "declared_ref": "v0.1.0",
+          "dependency_path": "ext/lib.scad.util",
+          "depth": 2,
+          "name": "lib.scad.util",
+          "owner_path": "dsg/openscad/ext/lib.scad.mechint",
+          "repository": "https://github.com/brainboxemb/lib.scad.util",
+          "revision": "5c88cd9b6b118d376825927ed67e26aff6eaee2d",
+          "used_sources": [
+            "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/openscad/inspection.scad"
+          ],
+          "worktree_path": "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util"
+        }
+      ],
+      "output": "bld/stl/dep04-nested-discovery.stl",
+      "source": "dsg/openscad/dep04-nested-discovery.scad"
+    },
+    {
+      "dependencies": [
+        {
+          "declared_ref": "v0.1.6",
+          "dependency_path": "dsg/openscad/ext/lib.scad.mechint",
+          "depth": 1,
+          "name": "lib.scad.mechint",
+          "owner_path": ".",
+          "repository": "https://github.com/brainboxemb/lib.scad.mechint",
+          "revision": "bdd39925f2ad391b32fad7ba56770053d4d5e2bc",
+          "used_sources": [
+            "dsg/openscad/ext/lib.scad.mechint/main.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/assemblies/sliding_dovetail_test_assembly.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/reference/sliding_dovetail_reference.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad",
+            "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad"
+          ],
+          "worktree_path": "dsg/openscad/ext/lib.scad.mechint"
+        },
+        {
+          "declared_ref": "v0.2.0",
+          "dependency_path": "dsg/openscad/ext/lib.scad.util",
+          "depth": 1,
+          "name": "lib.scad.util",
+          "owner_path": ".",
+          "repository": "https://github.com/brainboxemb/lib.scad.util",
+          "revision": "da1892a201c3bfc78a65e10df84d4a8d142ae8f6",
+          "used_sources": [
+            "dsg/openscad/ext/lib.scad.util/openscad/transform.scad"
+          ],
+          "worktree_path": "dsg/openscad/ext/lib.scad.util"
+        },
+        {
+          "declared_ref": "v0.1.0",
+          "dependency_path": "ext/lib.scad.util",
+          "depth": 2,
+          "name": "lib.scad.util",
+          "owner_path": "dsg/openscad/ext/lib.scad.mechint",
+          "repository": "https://github.com/brainboxemb/lib.scad.util",
+          "revision": "5c88cd9b6b118d376825927ed67e26aff6eaee2d",
+          "used_sources": [
+            "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/openscad/inspection.scad"
+          ],
+          "worktree_path": "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util"
+        }
+      ],
+      "output": "bld/stl/dep05-independent-pins.stl",
+      "source": "dsg/openscad/dep05-independent-pins.scad"
+    }
+  ]
+}

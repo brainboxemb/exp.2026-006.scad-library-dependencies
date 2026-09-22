@@ -1,0 +1,80 @@
+{
+  "backend_signature": "90b2bf091c2be8cf46e891906ed73fd6790c6026d1ce67cbfac69813b2dcb863",
+  "engine": "scons",
+  "kind": "build",
+  "manifest_schema_version": 1,
+  "outcome_counts": {
+    "BUILT": 3,
+    "CACHE_RESTORED": 0,
+    "CURRENT": 0,
+    "ERROR": 0
+  },
+  "provenance": {
+    "cache": {
+      "exact_hit": null,
+      "matched_key": null,
+      "namespace": null,
+      "primary_key": null
+    },
+    "source_commit_sha": "c4f4690c6850fbe44395017ef81f43a0a7121629",
+    "tool_commit_sha": "bfaac9f6916c09bc6525abddf64c87238fe59103",
+    "tool_version": "0.15.7",
+    "toolchain_image": "ghcr.io/brainboxemb/scad-toolchain-openscad:v0.6.1",
+    "toolchain_version": "v0.6.1",
+    "workflow_version": "v0.15.7"
+  },
+  "schema": "scad-project.build-decisions",
+  "schema_version": 1,
+  "target_count": 3,
+  "targets": [
+    {
+      "action_executed": true,
+      "existed_before": false,
+      "exists_after": true,
+      "outcome": "BUILT",
+      "output": "bld/png/01-baseline-mechint.png",
+      "sources": [
+        "dsg/openscad/render/01-baseline-mechint.scad",
+        "dsg/openscad/main.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad"
+      ],
+      "target_spec_digest": "6e496c03d3f12610b5e91ab7d2ec69dbdcdf57912f03edbddae2b8c8a838a420"
+    },
+    {
+      "action_executed": true,
+      "existed_before": false,
+      "exists_after": true,
+      "outcome": "BUILT",
+      "output": "bld/stl/dep04-nested-discovery.stl",
+      "sources": [
+        "dsg/openscad/dep04-nested-discovery.scad",
+        "dsg/openscad/ext/lib.scad.mechint/main.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/reference/sliding_dovetail_reference.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/assemblies/sliding_dovetail_test_assembly.scad",
+        "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/openscad/inspection.scad"
+      ],
+      "target_spec_digest": "7586ce54e71eef5335e6bb5897336255019c40dede0a803b4f0dd0b8df4f3843"
+    },
+    {
+      "action_executed": true,
+      "existed_before": false,
+      "exists_after": true,
+      "outcome": "BUILT",
+      "output": "bld/stl/dep05-independent-pins.stl",
+      "sources": [
+        "dsg/openscad/dep05-independent-pins.scad",
+        "dsg/openscad/ext/lib.scad.util/openscad/transform.scad",
+        "dsg/openscad/ext/lib.scad.mechint/main.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/sliding_dovetail_lock.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/reference/sliding_dovetail_reference.scad",
+        "dsg/openscad/ext/lib.scad.mechint/openscad/sliding-dovetail/assemblies/sliding_dovetail_test_assembly.scad",
+        "dsg/openscad/ext/lib.scad.mechint/ext/lib.scad.util/openscad/inspection.scad"
+      ],
+      "target_spec_digest": "dedbe9a41f22c9152e403702e4d730662d11e933919a7663d04d50e5dc5c1df5"
+    }
+  ]
+}
