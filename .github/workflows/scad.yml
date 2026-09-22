@@ -13,6 +13,6 @@ permissions:
 
 jobs:
   scad:
-    uses: brainboxemb/tool.scad-project/.github/workflows/project-production.yml@v0.15.2
+    uses: brainboxemb/tool.scad-project/.github/workflows/project-production.yml@v0.15.7
     with:
       cache_namespace: exp-2026-006-scad-library-dependencies-v1
