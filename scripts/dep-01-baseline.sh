@@ -5,7 +5,7 @@ root="$(git rev-parse --show-toplevel)"
 cd "$root"
 
 expected_root_git_tool="9879da589101f41b2b0e634d196ddcc51e1a6102"
-expected_root_scad_tool="70fd4162731484a949dc390e942dde8b8d811f10"
+expected_root_scad_tool="8ea81a0c3483770bedda75ccf80fb72797097c0a"
 expected_library_git_tool="7c43f37e7b07cfb57638a1d1dad2501de09ba7eb"
 expected_library_scad_tool="78e26949c6f2397ed90bb7888c1386d3dd423312"
 expected_mechint="bdd39925f2ad391b32fad7ba56770053d4d5e2bc"
