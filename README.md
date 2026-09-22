@@ -130,20 +130,28 @@ DEP-07 run `35645913457` and normal SCAD production run `35645914291` are
 green. The qualified result was merged to main as
 `035a9233f4ef99ad468c3ed0ab288f4772654922`.
 
-The repository remains a reusable regression lab. Production adoption is tracked
-centrally as **Migration 008 — proposed / inactive** in `brainboxemb.meta`;
-completion of this PoP does not activate that migration.
+The repository remains a reusable regression lab. Migration 008 has since
+completed production adoption. Migration 009 reuses this repository to qualify
+the corrected SCAD production/update stack against the retained DEP-01 through
+DEP-07 acceptance boundary.
+
+## Migration 009 regression
+
+Migration 009 requalifies this retained lab on released `tool.scad-project
+v0.15.7`. The release contains both production-branch serialization and the
+restored read-only `update-repo status` contract that DEP-06 exposed while
+qualifying v0.15.6.
 
 ## Current released baselines
 
 ```text
 tool.git-project
-  v0.2.8
-  7c43f37e7b07cfb57638a1d1dad2501de09ba7eb
+  v0.2.9
+  9879da589101f41b2b0e634d196ddcc51e1a6102
 
 tool.scad-project
-  v0.15.0
-  78e26949c6f2397ed90bb7888c1386d3dd423312
+  v0.15.7
+  bfaac9f6916c09bc6525abddf64c87238fe59103
 
 lib.scad.mechint
   v0.1.6

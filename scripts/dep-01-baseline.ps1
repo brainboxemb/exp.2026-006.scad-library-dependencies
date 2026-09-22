@@ -4,7 +4,7 @@ $Root = (& git rev-parse --show-toplevel).Trim()
 Set-Location $Root
 
 $ExpectedRootGitTool = "9879da589101f41b2b0e634d196ddcc51e1a6102"
-$ExpectedRootScadTool = "8ea81a0c3483770bedda75ccf80fb72797097c0a"
+$ExpectedRootScadTool = "bfaac9f6916c09bc6525abddf64c87238fe59103"
 $ExpectedLibraryGitTool = "7c43f37e7b07cfb57638a1d1dad2501de09ba7eb"
 $ExpectedLibraryScadTool = "78e26949c6f2397ed90bb7888c1386d3dd423312"
 $ExpectedMechint = "bdd39925f2ad391b32fad7ba56770053d4d5e2bc"
