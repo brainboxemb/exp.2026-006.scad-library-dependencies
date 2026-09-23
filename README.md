@@ -8,7 +8,16 @@ Status: **complete**
 Cross-project record:
 `brainboxemb/brainboxemb.meta/experiments/006-transitive-scad-library-dependencies`.
 
-## Current question
+## Documentation role
+
+This repository is retained experiment/regression evidence. The README is the
+experiment report; the meta experiment record is the cross-project coordination
+record. Exact pins below describe the qualified experiment baselines and must not
+be read as current portfolio-wide defaults.
+
+Current generic working conventions come from `brainboxemb.meta/AGENTS.md`.
+
+## Experiment question
 
 Can a reusable Brainboxemb SCAD library own and pin another SCAD library as a
 runtime/external dependency while remaining simple to consume?
@@ -142,7 +151,7 @@ v0.15.7`. The release contains both production-branch serialization and the
 restored read-only `update-repo status` contract that DEP-06 exposed while
 qualifying v0.15.6.
 
-## Current released baselines
+## Retained released baselines for the Migration 009 regression
 
 ```text
 tool.git-project
